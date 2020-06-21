@@ -2,9 +2,6 @@ import * as React from 'react'
 import { accountFetchMachine } from '../../machines/accountsMachine'
 import { subaccountFetchMachine } from '../../machines/subaccountMachine'
 import { userFetchMachine } from '../../machines/userMachine'
-
-// import SubReddit from '../SubReddit.tsx'
-
 import { useMachine } from '@xstate/react'
 
 const User = () => {
