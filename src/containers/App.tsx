@@ -4,7 +4,7 @@ import 'regenerator-runtime'
 import LayoutRoute from '../components/LayoutComponents/LayoutRoute'
 import Layout from '../components/LayoutComponents/Layout'
 
-import User from './Pages/User'
+import User from './UserAccount'
 
 const App = () => {
   return (
