@@ -33,7 +33,7 @@ const UserAccount = () => {
   const { accounts } = currentAccounts.context
 
   const handleClickAccount = (id: string) => {
-    sendSubaccount('FETCH_SUBACCOUNT', { id: id })
+    sendSubaccount('FETCH_SUBACCOUNTS', { id: id })
   }
   return (
     <div>

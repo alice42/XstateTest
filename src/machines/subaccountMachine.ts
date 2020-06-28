@@ -8,16 +8,16 @@ interface SubaccountFetchStateSchema {
   id: string
 }
 
-type SubaccountFetchEvent = { type: 'FETCH_SUBACCOUNT'; id: string }
+type SubaccountFetchEvent = { type: 'FETCH_SUBACCOUNTS'; id: string }
 
 interface SubaccountFetchContext {
   errorMessage?: string
-  subaccount: []
+  accountId: []
   subaccounts: []
 }
 
 const fetchSubaccounts = async (context: SubaccountFetchContext) => {
-  const id = context.subaccount
+  const id = context.accountId
   const subaccountResponse = await fetch(
     `https://kata.getmansa.com/accounts/${id}/transactions`
   )
@@ -43,21 +43,20 @@ export const subaccountFetchMachine = Machine<
   context: {
     errorMessage: undefined,
     subaccounts: [],
-    subaccount: []
+    accountId: []
   },
   states: {
     idle: {
       on: {
-        FETCH_SUBACCOUNT: {
+        FETCH_SUBACCOUNTS: {
           target: 'fetching',
           actions: assign((context, event) => {
-            console.log('TEST', context, event)
-            let subaccount = event.id
+            let accountId = event.id
 
-            if (subaccount) {
+            if (accountId) {
               return {
                 ...context,
-                subaccount
+                accountId
               }
             }
           })

@@ -1,10 +1,9 @@
-import * as React from 'react';
-import styled from "@emotion/styled";
-import Header from './Header';
-import Sidebar from './SideBar';
-import Footer from './Footer';
+import * as React from 'react'
+import styled from '@emotion/styled'
+import Header from './Header'
+import Sidebar from './SideBar'
 
-import { LayoutInterface } from '../../interfaces/LayoutInterfaces';
+import { LayoutInterface } from '../../interfaces/LayoutInterfaces'
 
 const StyledSection = styled.div`
   font-family: monospace;
@@ -13,13 +12,14 @@ const StyledSection = styled.div`
   height: inherit;
   display: flex;
   flex-wrap: wrap;
-`;
+  font-family: PingFang SC;
+`
 
 const StyledContent = styled.div`
-  background-color: #575757;
+  background-color: #eaeaea;
   flex: 3;
   min-height: 90%;
-`;
+`
 
 class Layout extends React.Component<LayoutInterface, {}> {
   render() {
@@ -28,10 +28,9 @@ class Layout extends React.Component<LayoutInterface, {}> {
         <Header />
         <Sidebar />
         <StyledContent>{this.props.children}</StyledContent>
-        {/* <Footer /> */}
       </StyledSection>
-    );
+    )
   }
 }
 
-export default Layout;
+export default Layout

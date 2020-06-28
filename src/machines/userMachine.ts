@@ -1,4 +1,5 @@
 import { Machine, assign } from 'xstate'
+
 interface UserFetchStateSchema {
   idle: {}
   fetching: {}
@@ -46,17 +47,17 @@ export const userFetchMachine = Machine<
     errorMessage: undefined,
     user: {
       unite_legale: {
-        nom: null,
-        prenom_1: null,
+        nom: '',
+        prenom_1: '',
         etablissement_siege: {
-          siret: null,
-          numero_voie: null,
-          type_voie: null,
-          libelle_voie: null,
-          code_postal: null,
-          libelle_commune: null
+          siret: '',
+          numero_voie: '',
+          type_voie: '',
+          libelle_voie: '',
+          code_postal: '',
+          libelle_commune: ''
         },
-        date_debut: null
+        date_debut: ''
       }
     }
   },
