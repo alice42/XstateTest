@@ -4,10 +4,12 @@ import { LayoutRouteInterface } from '../../interfaces/LayoutInterfaces';
 
 const LayoutRoute = ({
   component: Component,
-  layout: Layout
+  layout: Layout,
+  path: path,
 }: LayoutRouteInterface) => {
   return (
     <Route
+    path={path}
       render={props => (
         <Layout>
           <Component {...props} />

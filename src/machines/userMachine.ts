@@ -17,11 +17,7 @@ interface UserFetchContext {
       prenom_1: React.ReactNode
       etablissement_siege: {
         siret: React.ReactNode
-        numero_voie: React.ReactNode
-        type_voie: React.ReactNode
-        libelle_voie: React.ReactNode
-        code_postal: React.ReactNode
-        libelle_commune: React.ReactNode
+        geo_adresse: React.ReactNode
       }
       date_debut: React.ReactNode
     }
@@ -51,11 +47,7 @@ export const userFetchMachine = Machine<
         prenom_1: '',
         etablissement_siege: {
           siret: '',
-          numero_voie: '',
-          type_voie: '',
-          libelle_voie: '',
-          code_postal: '',
-          libelle_commune: ''
+          geo_adresse: ''
         },
         date_debut: ''
       }

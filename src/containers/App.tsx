@@ -4,6 +4,7 @@ import 'regenerator-runtime'
 import LayoutRoute from '../components/LayoutComponents/LayoutRoute'
 import Layout from '../components/LayoutComponents/Layout'
 import UserAccounts from './UserAccounts'
+import AccountTransactions from './AccountTransactions'
 
 const App = () => {
   return (
@@ -14,8 +15,14 @@ const App = () => {
         </Route>
         <LayoutRoute
           exact
-          path={'/Accounts'}
+          path={'/accounts'}
           component={UserAccounts}
+          layout={Layout}
+        />
+        <LayoutRoute
+          exact
+          path={'/account/:id'}
+          component={AccountTransactions}
           layout={Layout}
         />
         <Redirect to="/" />

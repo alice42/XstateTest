@@ -38,8 +38,7 @@ const UserAccount = () => {
   return (
     <div>
       <User user={user} />
-      <Accounts accounts={accounts} handleClickAccount={handleClickAccount} />
-      <Transactions subaccounts={subaccounts} />
+      <Accounts accounts={accounts} />
     </div>
   )
 }

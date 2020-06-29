@@ -20,7 +20,7 @@ const StyledHeader = styled.div`
 const Header = () => (
   <StyledHeader>
     <div>Mansa.</div>
-    <div
+    {/* <div
       style={{
         height: '35px',
         width: '35px',
@@ -29,7 +29,7 @@ const Header = () => (
         cursor: 'pointer'
       }}
       onClick={() => test()}
-    />
+    /> */}
   </StyledHeader>
 )
 
