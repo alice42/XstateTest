@@ -20,16 +20,6 @@ const StyledHeader = styled.div`
 const Header = () => (
   <StyledHeader>
     <div>Mansa.</div>
-    {/* <div
-      style={{
-        height: '35px',
-        width: '35px',
-        borderRadius: '50px',
-        border: '2px solid #836fe8',
-        cursor: 'pointer'
-      }}
-      onClick={() => test()}
-    /> */}
   </StyledHeader>
 )
 

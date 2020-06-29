@@ -52,6 +52,7 @@
     "react": "^16.9.35",
     "react-dom": "^16.9.35",
     "regenerator-runtime": "^0.13.5",
+    "rxjs": "^6.5.5",
     "typescript": "^3.9.3",
     "webpack-combine-loaders": "^2.0.4",
     "xstate": "^4.10.0"

@@ -1,28 +1,4 @@
-import { Machine, assign } from 'xstate'
-
-interface UserFetchStateSchema {
-  idle: {}
-  fetching: {}
-  success: {}
-  failure: {}
-}
-
-type UserFetchEvent = { type: 'FETCH_USERS' }
-
-interface UserFetchContext {
-  errorMessage?: string
-  user: {
-    unite_legale: {
-      nom: React.ReactNode
-      prenom_1: React.ReactNode
-      etablissement_siege: {
-        siret: React.ReactNode
-        geo_adresse: React.ReactNode
-      }
-      date_debut: React.ReactNode
-    }
-  }
-}
+import { createMachine, assign, interpret } from 'xstate'
 
 const fetchUsers = async () => {
   const userResponse = await fetch(
@@ -32,15 +8,55 @@ const fetchUsers = async () => {
   return users
 }
 
-export const userFetchMachine = Machine<
-  UserFetchContext,
-  UserFetchStateSchema,
-  UserFetchEvent
+interface User {
+  unite_legale: {
+    nom: string
+    prenom_1: string
+    etablissement_siege: {
+      siret: string
+      geo_adresse: string
+    }
+    date_debut: string
+  }
+}
+
+interface UserContext {
+  user?: User
+  error?: string
+}
+
+type UserEvent = { type: 'FETCH_USERS' } | { type: 'RETRY' }
+
+type UserState =
+  | {
+      value: 'idle'
+      context: UserContext & {
+        user: undefined
+        error: undefined
+      }
+    }
+  | {
+      value: 'loading'
+      context: UserContext
+    }
+  | {
+      value: 'success'
+      context: UserContext & { user: User; error: undefined }
+    }
+  | {
+      value: 'failure'
+      context: UserContext & { user: undefined; error: string }
+    }
+
+export const userFetchMachine = createMachine<
+  UserContext,
+  UserEvent,
+  UserState
 >({
   id: 'userFetch',
   initial: 'idle',
   context: {
-    errorMessage: undefined,
+    error: undefined,
     user: {
       unite_legale: {
         nom: '',
@@ -71,16 +87,12 @@ export const userFetchMachine = Machine<
         },
         onError: {
           target: 'failure',
-          actions: assign({ errorMessage: (context, event) => event.data })
+          actions: assign({ error: (context, event) => event.data })
         }
       }
     },
     success: {
-      on: {
-        MORE_USERS: {
-          target: 'fetching'
-        }
-      }
+      on: {}
     },
     failure: {
       on: {

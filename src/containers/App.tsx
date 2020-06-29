@@ -11,7 +11,7 @@ const App = () => {
     <BrowserRouter basename="/">
       <Switch>
         <Route exact path="/">
-          <Redirect to="/Accounts" />
+          <Redirect to="/accounts" />
         </Route>
         <LayoutRoute
           exact

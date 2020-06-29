@@ -37,7 +37,6 @@ const Accounts = (props: {
     current: React.ReactNode
   }[]
 }) => {
-  console.log('props.accounts', props.accounts)
   return (
     <ListCard>
       {props.accounts &&

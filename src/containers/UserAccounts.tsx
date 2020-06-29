@@ -4,15 +4,11 @@ import Accounts from '../components/Accounts'
 import Transactions from '../components/Transactions'
 import { useMachine } from '@xstate/react'
 import { accountFetchMachine } from '../machines/accountsMachine'
-import { subaccountFetchMachine } from '../machines/subaccountMachine'
 import { userFetchMachine } from '../machines/userMachine'
 
 const UserAccount = () => {
-  const [currentAccounts, sendAccount] = useMachine(accountFetchMachine)
-  const [currentSubaccounts, sendSubaccount] = useMachine(
-    subaccountFetchMachine
-  )
   const [currentUser, sendUser] = useMachine(userFetchMachine)
+  const [currentAccounts, sendAccount] = useMachine(accountFetchMachine)
 
   React.useEffect(
     () => {
@@ -20,8 +16,6 @@ const UserAccount = () => {
     },
     [currentUser, sendUser]
   )
-  const { user } = currentUser.context
-  const { subaccounts } = currentSubaccounts.context
 
   React.useEffect(
     () => {
@@ -30,11 +24,10 @@ const UserAccount = () => {
     },
     [currentAccounts, sendAccount]
   )
+
+  const { user } = currentUser.context
   const { accounts } = currentAccounts.context
 
-  const handleClickAccount = (id: string) => {
-    sendSubaccount('FETCH_SUBACCOUNTS', { id: id })
-  }
   return (
     <div>
       <User user={user} />
