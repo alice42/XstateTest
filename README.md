@@ -8,7 +8,7 @@
 ## Installation
 
 ```bash
-git clone https://github.com/alice42/MansaTest.git && cd MansaTest
+git clone https://github.com/alice42/XstateTest.git && cd XstateTest
 npm run setup
 ```
 
