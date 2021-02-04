@@ -1,4 +1,4 @@
-# MansaTest
+# XstateTest
 
 ## Required
 
